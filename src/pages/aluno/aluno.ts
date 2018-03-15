@@ -17,7 +17,9 @@ import { NavController, NavParams, ModalController, LoadingController } from 'io
 export class AlunoPage {
 
     alunos = []
-    carregando = true
+    carregando = true;
+    erro = false
+
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -33,12 +35,13 @@ export class AlunoPage {
     loading.present();
     this.alunoProvider.getAlunos().subscribe(alunos => {
       this.alunos = alunos;
+      console.log('see',this.alunos.length);
       this.carregando = false;
-      loading.dismiss()
-
-
+      loading.dismiss();
 
     })
+
+
   }
   openModal(beerId) {
     let modal = this.modalCtrl.create(AlunoModalPage, beerId);

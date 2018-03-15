@@ -18,11 +18,12 @@
 
 <ion-content padding>
 
-    <ion-content *ngIf="!carregando" padding>
+    <ion-content  padding>
 
-        <ion-card  *ngFor="let aluno of alunos">
+        <ion-card *ngFor="let aluno of alunos">
 
-  <ion-item text-center>
+  <ion-item *ngIf="!erro"  text-center>
+
     <h2 class="aluno-title">{{aluno.nome}}</h2>
     <p class="aluno-date">{{aluno.matricula}}</p>
     <img *ngIf="aluno.curso.id===1" class="img-curso"  src="./assets/imgs/curso-sistemas.jpg">
@@ -31,6 +32,8 @@
     <img *ngIf="aluno.curso.id===4" class="img-curso"  src="./assets/imgs/curso-engenharia.jpg">
 
   </ion-item>
+
+  <h2 *ngIf="erro" class="msg-erro">Erro ao carregar alunos, tente novamente</h2>
 
 
 
