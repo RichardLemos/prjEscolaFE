@@ -18,9 +18,9 @@
 
 <ion-content padding>
 
-    <ion-content padding>
+    <ion-content *ngIf="!carregando" padding>
 
-        <ion-card *ngFor="let aluno of alunos">
+        <ion-card  *ngFor="let aluno of alunos">
 
   <ion-item text-center>
     <h2 class="aluno-title">{{aluno.nome}}</h2>
