@@ -1,5 +1,6 @@
 import { AlunoModalPage } from './../pages/aluno-modal/aluno-modal';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 import { AlunoPage } from './../pages/aluno/aluno';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +26,7 @@ import { AlunoProvider } from '../providers/aluno/aluno';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

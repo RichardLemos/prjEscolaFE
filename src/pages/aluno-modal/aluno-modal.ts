@@ -44,28 +44,24 @@ export class AlunoModalPage {
   }
 
   save(form) {
-    console.log('see',this.curso);
-
-
     let alunoForm:Aluno = form;
     console.log(this.curso.value)
     alunoForm.curso = this.curso.value
     alunoForm.id = this.curso.value
-    console.log('data antes',alunoForm);
-
     alunoForm.anoNascimento = this.convertDateToTimestamp(alunoForm.anoNascimento)
-
-    console.log('depois ', alunoForm);
 
     let update: boolean = alunoForm['href'];
     this.alunoProvider.save(alunoForm).subscribe(result => {
-      let toast = this.toastCtrl.create({
-        message: 'Aluno "' + alunoForm.nome + '" ' + ((update) ? 'updated' : 'added') + '.',
-        duration: 2000
-      });
-      toast.present();
+      //Olhar porque não chega aqui
+
+
+    }, error => this.error = error);
+    let toast = this.toastCtrl.create({
+      message: 'Aluno em destaque "' + alunoForm.nome + '" ' + ((update) ? 'updated' : 'Salvo') + '.',
+      duration: 2000
+    });
+    toast.present();
       this.dismiss();
-    }, error => this.error = error)
   }
 
   ionViewDidLoad() {
