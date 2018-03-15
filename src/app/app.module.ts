@@ -1,3 +1,4 @@
+import { AlunoModalPage } from './../pages/aluno-modal/aluno-modal';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AlunoPage } from './../pages/aluno/aluno';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -16,6 +17,7 @@ import { AlunoProvider } from '../providers/aluno/aluno';
 @NgModule({
   declarations: [
     AlunoPage,
+    AlunoModalPage,
     MyApp,
     AboutPage,
     HomePage,
@@ -29,6 +31,7 @@ import { AlunoProvider } from '../providers/aluno/aluno';
   bootstrap: [IonicApp],
   entryComponents: [
     AlunoPage,
+    AlunoModalPage,
     MyApp,
     AboutPage,
     HomePage,

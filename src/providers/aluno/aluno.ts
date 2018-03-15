@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AlunoProvider {
 
-  public API = 'http://localhost:8080';
+  public API = 'http://localhost:8080/alunos';
 
 
   constructor(public http: HttpClient) {
@@ -19,11 +19,16 @@ export class AlunoProvider {
   }
 
   getAlunos(): Observable<any> {
+    return this.http.get(this.API);
 
+  }
 
-    return this.http.get(this.API + '/alunos');
+  save(aluno: any): Observable<any> {
+    let result: Observable<Object>;
 
+      result = this.http.post(this.API, aluno)
 
+    return result;
   }
 
 }

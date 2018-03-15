@@ -5,13 +5,16 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Aluno</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
+    <ion-navbar>
+      <ion-title>Alunos em Destaque</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="openModal()" color="primary">
+          <ion-icon name="add-circle"></ion-icon>
+          <ion-icon name="people"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
 
 <ion-content padding>
 

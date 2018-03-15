@@ -1,6 +1,7 @@
+import { AlunoModalPage } from './../aluno-modal/aluno-modal';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the AlunoPage page.
@@ -19,7 +20,8 @@ export class AlunoPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public alunoProvider:AlunoProvider) {
+              public alunoProvider:AlunoProvider,
+              public modalCtrl:ModalController) {
   }
 
   ionViewDidLoad() {
@@ -30,7 +32,14 @@ export class AlunoPage {
 
     })
   }
+  openModal(beerId) {
+    let modal = this.modalCtrl.create(AlunoModalPage, beerId);
+    modal.present();
+    // refresh data after modal dismissed
+    modal.onDidDismiss(() => this.ionViewDidLoad())
+  }
 }
+
 
 
 
