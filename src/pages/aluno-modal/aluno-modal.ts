@@ -19,8 +19,17 @@ import { NgForm } from '@angular/forms';
 export class AlunoModalPage {
 
   @ViewChild('name') name;
+  @ViewChild('curso') curso;
   aluno: any = {};
   error: any;
+  cursos = [
+
+  {id: 1, nome: "Sistemas de informação"},
+  {id: 2, nome: "Medicina"},
+  {id: 3, nome: "Nutrição"},
+  {id: 4, nome: "Engenharia Civil"}
+
+  ]
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -35,14 +44,17 @@ export class AlunoModalPage {
   }
 
   save(form) {
+    console.log('see',this.curso);
 
 
     let alunoForm:Aluno = form;
-    alunoForm.curso = '1'
-    alunoForm.id = '1'
-    console.log(alunoForm);
+    console.log(this.curso.value)
+    alunoForm.curso = this.curso.value
+    alunoForm.id = this.curso.value
+    console.log('data antes',alunoForm);
 
     alunoForm.anoNascimento = this.convertDateToTimestamp(alunoForm.anoNascimento)
+
     console.log('depois ', alunoForm);
 
     let update: boolean = alunoForm['href'];
@@ -57,14 +69,16 @@ export class AlunoModalPage {
   }
 
   ionViewDidLoad() {
-    setTimeout(() => {
-      this.name.setFocus();
-    },150);
+    console.log(this.cursos);
+
+    // setTimeout(() => {
+    //   this.name.setFocus();
+    // },150);
   }
 
   public convertDateToTimestamp(data){
 
- let obj = new Date(data).getTime() / 1000;
+ let obj = new Date(data).getTime();
   return obj;
 
   }
