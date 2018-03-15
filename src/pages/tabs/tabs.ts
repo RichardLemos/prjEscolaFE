@@ -1,7 +1,6 @@
 import { AlunoPage } from './../aluno/aluno';
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
 import { HomePage } from '../home/home';
 
 @Component({
@@ -10,8 +9,7 @@ import { HomePage } from '../home/home';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = AlunoPage;
+  tab2Root = AlunoPage;
 
   constructor() {
 
