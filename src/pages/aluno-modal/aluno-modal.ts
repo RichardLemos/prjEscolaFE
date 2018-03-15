@@ -1,3 +1,4 @@
+import { Aluno } from './../../model/aluno';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component, ViewChild } from '@angular/core';
 import {NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
@@ -33,11 +34,21 @@ export class AlunoModalPage {
     this.viewCtrl.dismiss();
   }
 
-  save(form: NgForm) {
-    let update: boolean = form['href'];
-    this.alunoProvider.save(form).subscribe(result => {
+  save(form) {
+
+
+    let alunoForm:Aluno = form;
+    alunoForm.curso = '1'
+    alunoForm.id = '1'
+    console.log(alunoForm);
+
+    alunoForm.anoNascimento = this.convertDateToTimestamp(alunoForm.anoNascimento)
+    console.log('depois ', alunoForm);
+
+    let update: boolean = alunoForm['href'];
+    this.alunoProvider.save(alunoForm).subscribe(result => {
       let toast = this.toastCtrl.create({
-        message: 'Aluno "' + form.name + '" ' + ((update) ? 'updated' : 'added') + '.',
+        message: 'Aluno "' + alunoForm.nome + '" ' + ((update) ? 'updated' : 'added') + '.',
         duration: 2000
       });
       toast.present();
@@ -46,15 +57,15 @@ export class AlunoModalPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.convertTimestampToDate('2012.08.10'))
     setTimeout(() => {
       this.name.setFocus();
     },150);
   }
 
-  public convertTimestampToDate(data){
+  public convertDateToTimestamp(data){
+
  let obj = new Date(data).getTime() / 1000;
-    return obj;
+  return obj;
 
   }
 }
