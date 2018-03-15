@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AlunoProvider {
 
-  public API = 'http://localhost:8080/alunos';
+  // public API = 'http://localhost:8080/alunos';  //test
+  public API = 'https://prj-aluno-destaque.herokuapp.com/alunos' //prod
 
 
   constructor(public http: Http) {
