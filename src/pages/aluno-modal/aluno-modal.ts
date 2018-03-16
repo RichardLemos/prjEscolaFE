@@ -4,6 +4,7 @@ import { Component, ViewChild } from '@angular/core';
 import {NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
+
 /**
  * Generated class for the AlunoModalPage page.
  *
@@ -18,9 +19,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AlunoModalPage {
 
-  @ViewChild('name') name;
+  @ViewChild('nome') nome;
   @ViewChild('curso') curso;
-  aluno: any = {};
+  aluno;
   error: any;
   cursos = [
 
@@ -31,13 +32,19 @@ export class AlunoModalPage {
 
   ]
 
+
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewCtrl:ViewController,
               public toastCtrl:ToastController,
               public alunoProvider:AlunoProvider
             ) {
-  }
+
+      this.aluno = this.navParams.get('aluno')
+      console.log('see',this.aluno);
+
+      }
 
   dismiss() {
     this.viewCtrl.dismiss();
@@ -45,19 +52,21 @@ export class AlunoModalPage {
 
   save(form) {
     let alunoForm:Aluno = form;
-    console.log(this.curso.value)
+
     alunoForm.curso = this.curso.value
-    alunoForm.id = this.curso.value
+
+
+
     alunoForm.anoNascimento = this.convertDateToTimestamp(alunoForm.anoNascimento)
 
-    let update: boolean = alunoForm['href'];
-    this.alunoProvider.save(alunoForm).subscribe(result => {
-      //Olhar porque não chega aqui
+    console.log('see the aluno antes de save',alunoForm);
+
+    this.alunoProvider.save(alunoForm,form).subscribe(result => {
 
 
     }, error => this.error = error);
     let toast = this.toastCtrl.create({
-      message: 'Aluno em destaque "' + alunoForm.nome + '" ' + ((update) ? 'updated' : 'Salvo') + '.',
+      message: 'Aluno em destaque "' + alunoForm.nome + " Salvo" + '.',
       duration: 2000
     });
     toast.present();
@@ -65,11 +74,12 @@ export class AlunoModalPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.cursos);
 
-    // setTimeout(() => {
-    //   this.name.setFocus();
-    // },150);
+
+
+    setTimeout(() => {
+      this.nome.setFocus();
+    },150);
   }
 
   public convertDateToTimestamp(data){

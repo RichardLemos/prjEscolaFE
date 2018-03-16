@@ -22,7 +22,7 @@
 
         <ion-card *ngFor="let aluno of alunos">
 
-  <ion-item *ngIf="!erro"  text-center>
+  <ion-item (click)="openModal({aluno:aluno})"   *ngIf="!erro"  text-center>
 
     <h2 class="aluno-title">{{aluno.nome}}</h2>
     <p class="aluno-date">{{aluno.matricula}}</p>

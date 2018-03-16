@@ -4,8 +4,8 @@ export class Aluno{
     public matricula:string,
     public curso:string,
     public id:string,
+    public anoNascimento:any,
 
-    public anoNascimento:any
 
   ){}
 }

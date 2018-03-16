@@ -29,13 +29,13 @@ export class AlunoPage {
   }
 
   ionViewDidLoad() {
+
     let loading = this.loadingCtrl.create({
       content: 'Carregando os alunos em destaque...'
     });
     loading.present();
     this.alunoProvider.getAlunos().subscribe(alunos => {
       this.alunos = alunos;
-      console.log('see',this.alunos.length);
       this.carregando = false;
       loading.dismiss();
 
@@ -43,8 +43,8 @@ export class AlunoPage {
 
 
   }
-  openModal(beerId) {
-    let modal = this.modalCtrl.create(AlunoModalPage, beerId);
+  openModal(aluno) {
+    let modal = this.modalCtrl.create(AlunoModalPage, aluno);
     modal.present();
     // refresh data after modal dismissed
     modal.onDidDismiss(() => this.ionViewDidLoad())

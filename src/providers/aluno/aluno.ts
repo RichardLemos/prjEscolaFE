@@ -11,12 +11,19 @@ import { Observable } from 'rxjs';
 */
 @Injectable()
 export class AlunoProvider {
+  aluno
+  existeAluno:boolean = false;
 
-  // public API = 'http://localhost:8080/alunos';  //test
-  public API = 'https://prj-aluno-destaque.herokuapp.com/alunos' //prod
+  public API = 'http://localhost:8080/alunos';  //test
+  // public API = 'https://prj-aluno-destaque.herokuapp.com/alunos' //prod
 
 
   constructor(public http: Http) {
+
+  }
+  getAluno(id): Observable<any> {
+    return this.http.get(this.API + '/' + id)
+    .map((response:Response)=>response.json())
 
   }
 
@@ -26,14 +33,43 @@ export class AlunoProvider {
 
   }
 
-  save(aluno: any): Observable<any> {
+  save(aluno: any,alunoAntigo): Observable<any> {
+
+
+    this.aluno = aluno;
     let result: Observable<Response>;
 
-    result = this.http.post(this.API, aluno)
+    this.getAluno(alunoAntigo.id).subscribe((aluno)=>{
+      console.log(aluno);
+
+      if(aluno===null){
+        console.log('passou');
+
+        this.existeAluno = true;
+      }
+
+    })
+
+    console.log(this.existeAluno);
+
+    if(this.existeAluno){
+
+      aluno.anoNascimento = 12121212
+
+      result = this.http.post(this.API, this.aluno)
+
+
+    }else{
+      result = this.http.put(this.API + '/' + this.aluno.id , this.aluno)
+
+
+    }
+
 
     return result.map((response: Response) => response.json())
     .catch(error => Observable.throw(error));
   }
+
   }
 
 

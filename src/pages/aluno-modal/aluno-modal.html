@@ -12,9 +12,9 @@
     </ion-toolbar>
   </ion-header>
   <ion-content padding>
-    <form #alunoForm="ngForm" (ngSubmit)="save(alunoForm.value)">
-      <input type="hidden" name="href" [(ngModel)]="aluno.href">
-      <ion-row>
+    <form #alunoForm="ngForm" (ngSubmit)="save(aluno)">
+
+      <ion-row *ngIf="aluno">
         <ion-col>
           <ion-list inset>
             <ion-item>
@@ -29,11 +29,11 @@
 
               <ion-item>
                   <ion-input placeholder="Data de nascimento" name="anoNascimento" type="date"
-                             required [(ngModel)]="aluno.anoNascimento" #anoNascimento></ion-input>
+                             required  #anoNascimento></ion-input>
                 </ion-item>
                 <ion-item>
 
-                  <ion-select [(ngModel)]="aluno.curso" name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
+                  <ion-select [(ngModel)]="aluno.curso.id" name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
                       <ion-option   *ngFor="let curso of cursos" value="{{curso.id}}">{{curso.nome}}</ion-option>
                     </ion-select>
                     </ion-item>
@@ -41,6 +41,36 @@
           </ion-list>
         </ion-col>
       </ion-row>
+
+      <ion-row *ngIf="!aluno">
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-input placeholder="Nome" name="nome" type="text"
+                         required  #nome></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input placeholder="Matrícula" name="matricula" type="number"
+                           required  #matricula></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input placeholder="Data de nascimento" name="anoNascimento" type="date"
+                           required  #anoNascimento></ion-input>
+              </ion-item>
+                <ion-item>
+
+                  <ion-select   [(ngModel)]="aluno.curso"  name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
+                      <ion-option    *ngFor="let curso of cursos" value="{{curso.id}}">{{curso.nome}}</ion-option>
+                    </ion-select>
+                    </ion-item>
+
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+
       <ion-row>
 
       </ion-row>
@@ -49,6 +79,7 @@
 
           <button ion-button color="primary" full type="submit"
                   [disabled]="!alunoForm.form.valid">Salvar</button>
+
         </ion-col>
       </ion-row>
     </form>
