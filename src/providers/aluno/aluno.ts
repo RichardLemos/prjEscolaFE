@@ -33,43 +33,45 @@ export class AlunoProvider {
 
   }
 
-  save(aluno: any,alunoAntigo): Observable<any> {
+  update(aluno: any): Observable<any> {
 
 
     this.aluno = aluno;
     let result: Observable<Response>;
 
-    this.getAluno(alunoAntigo.id).subscribe((aluno)=>{
-      console.log(aluno);
-
-      if(aluno===null){
-        console.log('passou');
-
-        this.existeAluno = true;
-      }
-
-    })
-
-    console.log(this.existeAluno);
-
-    if(this.existeAluno){
-
-      aluno.anoNascimento = 12121212
-
       result = this.http.post(this.API, this.aluno)
 
 
-    }else{
+
       result = this.http.put(this.API + '/' + this.aluno.id , this.aluno)
 
 
-    }
+
 
 
     return result.map((response: Response) => response.json())
     .catch(error => Observable.throw(error));
   }
 
+  save(aluno:any){
+    this.aluno = aluno;
+    let result: Observable<Response>;
+
+      result = this.http.post(this.API, this.aluno)
+
+
+    return result.map((response: Response) => response.json())
+    .catch(error => Observable.throw(error));
   }
+
+  apagarAluno(id){
+
+    return this.http.delete(this.API + '/' + id);
+
+  }
+
+  }
+
+
 
 

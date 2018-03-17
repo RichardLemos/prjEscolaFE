@@ -61,7 +61,7 @@ export class AlunoModalPage {
 
     console.log('see the aluno antes de save',alunoForm);
 
-    this.alunoProvider.save(alunoForm,form).subscribe(result => {
+    this.alunoProvider.save(alunoForm).subscribe(result => {
 
 
     }, error => this.error = error);

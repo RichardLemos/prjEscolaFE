@@ -50,6 +50,14 @@ export class AlunoPage {
     modal.onDidDismiss(() => this.ionViewDidLoad())
   }
 
+  apagarAluno(aluno){
+    this.alunoProvider.apagarAluno(aluno).subscribe(()=>{
+      this.ionViewDidLoad()
+
+    })
+
+  }
+
 
 
 

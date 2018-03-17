@@ -34,7 +34,7 @@
                 <ion-item>
 
                   <ion-select [(ngModel)]="aluno.curso.id" name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
-                      <ion-option   *ngFor="let curso of cursos" value="{{curso.id}}">{{curso.nome}}</ion-option>
+                      <ion-option   *ngFor="let curso of cursos" >{{curso.nome}}</ion-option>
                     </ion-select>
                     </ion-item>
 
@@ -42,33 +42,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row *ngIf="!aluno">
-        <ion-col>
-          <ion-list inset>
-            <ion-item>
-              <ion-input placeholder="Nome" name="nome" type="text"
-                         required  #nome></ion-input>
-            </ion-item>
 
-            <ion-item>
-                <ion-input placeholder="Matrícula" name="matricula" type="number"
-                           required  #matricula></ion-input>
-              </ion-item>
-
-              <ion-item>
-                <ion-input placeholder="Data de nascimento" name="anoNascimento" type="date"
-                           required  #anoNascimento></ion-input>
-              </ion-item>
-                <ion-item>
-
-                  <ion-select   [(ngModel)]="aluno.curso"  name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
-                      <ion-option    *ngFor="let curso of cursos" value="{{curso.id}}">{{curso.nome}}</ion-option>
-                    </ion-select>
-                    </ion-item>
-
-          </ion-list>
-        </ion-col>
-      </ion-row>
 
 
       <ion-row>
