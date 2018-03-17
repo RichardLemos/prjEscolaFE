@@ -6,7 +6,7 @@
 -->
 <ion-header>
     <ion-navbar>
-      <ion-title>Alunos em Destaque</ion-title>
+      <ion-title>Top CR da Semana</ion-title>
       <ion-buttons end>
         <button ion-button icon-only (click)="openModal()" color="primary">
           <ion-icon name="add-circle"></ion-icon>
@@ -25,7 +25,7 @@
   <ion-item no-lines   *ngIf="!erro"  text-center>
 
     <h2 class="aluno-title">{{aluno.nome}}</h2>
-    <p class="aluno-date">{{aluno.matricula}}</p>
+    <p class="aluno-date">{{aluno.cr}}</p>
     <img *ngIf="aluno.curso.id===1" class="img-curso"  src="./assets/imgs/curso-sistemas.jpg">
     <img *ngIf="aluno.curso.id===2" class="img-curso"  src="./assets/imgs/curso-medicina.jpg">
     <img *ngIf="aluno.curso.id===3" class="img-curso"  src="./assets/imgs/curso-nutricao.jpg">
@@ -35,12 +35,5 @@
 
 
   </ion-card>
-  <ion-row>
-    <div *ngIf="alunos.length===0">
-        <h2 >Sem Alunos </h2>   <ion-icon text-center name="sad"></ion-icon>
-    </div>
-
-  </ion-row>
-
 
 </ion-content>

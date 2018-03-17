@@ -14,12 +14,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlunoProvider } from '../providers/aluno/aluno';
+import { CursoProvider } from '../providers/curso/curso';
+import { CursoPage } from '../pages/curso/curso';
 
 @NgModule({
   declarations: [
     AlunoPage,
     AlunoModalPage,
     MyApp,
+    CursoPage,
 
     HomePage,
     TabsPage
@@ -31,6 +34,7 @@ import { AlunoProvider } from '../providers/aluno/aluno';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    CursoPage,
     AlunoPage,
     AlunoModalPage,
     MyApp,
@@ -42,7 +46,8 @@ import { AlunoProvider } from '../providers/aluno/aluno';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AlunoProvider
+    AlunoProvider,
+    CursoProvider
   ]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { AlunoModalPage } from './../aluno-modal/aluno-modal';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the AlunoPage page.
@@ -25,10 +25,13 @@ export class AlunoPage {
               public navParams: NavParams,
               public alunoProvider:AlunoProvider,
               public modalCtrl:ModalController,
-              public loadingCtrl:LoadingController) {
+              public loadingCtrl:LoadingController,
+              public toastCtrl:ToastController) {
   }
 
   ionViewDidLoad() {
+
+
 
     let loading = this.loadingCtrl.create({
       content: 'Carregando os alunos em destaque...'
@@ -39,7 +42,14 @@ export class AlunoPage {
       this.carregando = false;
       loading.dismiss();
 
+    if(alunos.length===0){
+      this.presentToast();
+    }
+
+    console.log(this.alunos);
+
     })
+
 
 
   }
@@ -55,6 +65,22 @@ export class AlunoPage {
       this.ionViewDidLoad()
 
     })
+
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Ainda não possui alunos',
+      duration: 4000,
+      position: 'middle'
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+    setTimeout(()=>{
+      toast.present();
+    },3000)
 
   }
 

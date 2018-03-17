@@ -26,11 +26,18 @@
                 <ion-input placeholder="Matrícula" name="matricula" type="number"
                            required [(ngModel)]="aluno.matricula" #matricula></ion-input>
               </ion-item>
+
+              <ion-item>
+                  <ion-input placeholder="CR" name="cr" type="number"
+                         min="10" max="1"    required [(ngModel)]="aluno.nota" #matricula></ion-input>
+                </ion-item>
                 <ion-item>
                   <ion-select  name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
                       <ion-option [value]="curso.id"  *ngFor="let curso of cursos" >{{curso.nome}}</ion-option>
                     </ion-select>
                     </ion-item>
+
+
 
           </ion-list>
         </ion-col>
