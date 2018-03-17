@@ -21,7 +21,7 @@ export class AlunoModalPage {
 
   @ViewChild('nome') nome;
   @ViewChild('curso') curso;
-  aluno;
+  aluno:any = {};
   error: any;
   cursos = [
 
@@ -40,10 +40,6 @@ export class AlunoModalPage {
               public toastCtrl:ToastController,
               public alunoProvider:AlunoProvider
             ) {
-
-      this.aluno = this.navParams.get('aluno')
-      console.log('see',this.aluno);
-
       }
 
   dismiss() {
@@ -51,13 +47,13 @@ export class AlunoModalPage {
   }
 
   save(form) {
-    let alunoForm:Aluno = form;
+    let alunoForm = form;
+    console.log(this.curso.value);
 
     alunoForm.curso = this.curso.value
+    alunoForm.id = this.curso.value
 
 
-
-    alunoForm.anoNascimento = this.convertDateToTimestamp(alunoForm.anoNascimento)
 
     console.log('see the aluno antes de save',alunoForm);
 
@@ -75,19 +71,12 @@ export class AlunoModalPage {
 
   ionViewDidLoad() {
 
-
-
     setTimeout(() => {
       this.nome.setFocus();
     },150);
   }
 
-  public convertDateToTimestamp(data){
 
- let obj = new Date(data).getTime();
-  return obj;
-
-  }
 }
 
 
