@@ -36,7 +36,10 @@
 
   </ion-card>
   <ion-row>
-      <h2 *ngIf="alunos.length===0">Sem Alunos </h2>   <ion-icon text-center name="sad"></ion-icon>
+    <div *ngIf="alunos.length===0">
+        <h2 >Sem Alunos </h2>   <ion-icon text-center name="sad"></ion-icon>
+    </div>
+
   </ion-row>
 
 
