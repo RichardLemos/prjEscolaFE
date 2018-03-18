@@ -1,3 +1,4 @@
+import { DetalhesCursoPage } from './../detalhes-curso/detalhes-curso';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CursoProvider } from '../../providers/curso/curso';
@@ -30,10 +31,9 @@ export class CursoPage {
 
 
     ionViewDidLoad(){
-
-
-
-
+    }
+    openDetalhesCurso(idCurso){
+      this.navCtrl.push(DetalhesCursoPage,{idCurso:idCurso})
     }
 
   }

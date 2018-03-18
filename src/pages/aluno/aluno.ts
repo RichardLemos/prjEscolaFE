@@ -1,7 +1,7 @@
 import { AlunoModalPage } from './../aluno-modal/aluno-modal';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController, ToastController, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the AlunoPage page.
@@ -26,12 +26,11 @@ export class AlunoPage {
               public alunoProvider:AlunoProvider,
               public modalCtrl:ModalController,
               public loadingCtrl:LoadingController,
-              public toastCtrl:ToastController) {
+              public toastCtrl:ToastController,
+              public alertCtrl:AlertController) {
   }
 
   ionViewDidLoad() {
-
-
 
     let loading = this.loadingCtrl.create({
       content: 'Carregando os alunos em destaque...'
@@ -50,8 +49,6 @@ export class AlunoPage {
 
     })
 
-
-
   }
   openModal(aluno) {
     let modal = this.modalCtrl.create(AlunoModalPage, aluno);
@@ -61,11 +58,26 @@ export class AlunoPage {
   }
 
   apagarAluno(aluno){
-    this.alunoProvider.apagarAluno(aluno).subscribe(()=>{
-      this.ionViewDidLoad()
+    let confirm = this.alertCtrl.create({
+      title: 'Tem certeza que você quer apagar o aluno ?',
+      buttons: [
+        {
+          text: 'Sim',
+          handler: () => {
+            this.alunoProvider.apagarAluno(aluno).subscribe(()=>{
+              this.ionViewDidLoad()
 
-    })
-
+            })
+          }
+        },
+        {
+          text: 'Não',
+          handler: () => {
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   presentToast() {

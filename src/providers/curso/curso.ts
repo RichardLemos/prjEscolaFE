@@ -25,6 +25,11 @@ export class CursoProvider {
 
   }
 
+  getCurso(idCurso): Observable<any> {
+    return this.http.get(this.API + '/' + idCurso)
+    .map((response:Response)=>response.json())
+
+  }
 
 
 

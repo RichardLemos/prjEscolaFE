@@ -1,3 +1,5 @@
+import { DetalhesAlunoPage } from './../pages/detalhes-aluno/detalhes-aluno';
+import { DetalhesCursoPage } from './../pages/detalhes-curso/detalhes-curso';
 import { AlunoModalPage } from './../pages/aluno-modal/aluno-modal';
 import { HttpModule } from '@angular/http';
 
@@ -23,7 +25,8 @@ import { CursoPage } from '../pages/curso/curso';
     AlunoModalPage,
     MyApp,
     CursoPage,
-
+    DetalhesCursoPage,
+    DetalhesAlunoPage,
     HomePage,
     TabsPage
   ],
@@ -38,7 +41,8 @@ import { CursoPage } from '../pages/curso/curso';
     AlunoPage,
     AlunoModalPage,
     MyApp,
-
+    DetalhesCursoPage,
+    DetalhesAlunoPage,
     HomePage,
     TabsPage
   ],

@@ -20,8 +20,9 @@
 
     <ion-content  padding>
 
-        <ion-card *ngFor="let aluno of alunos">
-
+        <ion-card (click)="openDetalhesAluno()" *ngFor="let aluno of alunos">
+<ion-row>
+          <ion-col align-self: center >
   <ion-item no-lines   *ngIf="!erro"  text-center>
 
     <h2 class="aluno-title">{{aluno.nome}}</h2>
@@ -30,10 +31,11 @@
     <img *ngIf="aluno.curso.id===2" class="img-curso"  src="./assets/imgs/curso-medicina.jpg">
     <img *ngIf="aluno.curso.id===3" class="img-curso"  src="./assets/imgs/curso-nutricao.jpg">
     <img *ngIf="aluno.curso.id===4" class="img-curso"  src="./assets/imgs/curso-engenharia.jpg">
-    <button ion-button round color="danger" (click)="apagarAluno(aluno.id)">Apagar Aluno</button>
+    <button class="btn-apagar" ion-button round color="danger" (click)="apagarAluno(aluno.id)">Apagar Aluno</button>
   </ion-item>
 
-
+</ion-col>
+</ion-row>
   </ion-card>
 
 </ion-content>

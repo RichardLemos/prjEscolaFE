@@ -1,7 +1,7 @@
 import { Aluno } from './../../model/aluno';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component, ViewChild } from '@angular/core';
-import {NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 
@@ -38,7 +38,8 @@ export class AlunoModalPage {
               public navParams: NavParams,
               public viewCtrl:ViewController,
               public toastCtrl:ToastController,
-              public alunoProvider:AlunoProvider
+              public alunoProvider:AlunoProvider,
+              public alertCtrl:AlertController
             ) {
       }
 
@@ -47,18 +48,17 @@ export class AlunoModalPage {
   }
 
   save(form) {
+    if(form.cr>10 || form.cr<0){
+      this.presentAlert();
+      return;
+    }
     let alunoForm = form;
     console.log(this.curso.value);
 
     alunoForm.curso = this.curso.value
     alunoForm.id = this.curso.value
 
-
-
-    console.log('see the aluno antes de save',alunoForm);
-
     this.alunoProvider.save(alunoForm).subscribe(result => {
-
 
     }, error => this.error = error);
     let toast = this.toastCtrl.create({
@@ -74,6 +74,15 @@ export class AlunoModalPage {
     setTimeout(() => {
       this.nome.setFocus();
     },150);
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Nota inválida',
+      subTitle: 'A nota deve ser maior que 0 e menor 10 ',
+      buttons: ['Ok']
+    });
+    alert.present();
   }
 
 

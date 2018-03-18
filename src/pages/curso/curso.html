@@ -14,8 +14,12 @@
 
 <ion-content padding>
 
-    <ion-list *ngFor="let curso of cursos">
-        <ion-item>{{curso.nome}}</ion-item>
-      </ion-list>
+   <ion-card (click)="openDetalhesCurso(curso.id)" *ngFor="let curso of cursos">
+     <ion-item text-center>
+       <ion-card-content>
+         <h2 style="font-weight:bold">{{curso.nome}}</h2>
+       </ion-card-content>
+     </ion-item>
+   </ion-card>
 
 </ion-content>

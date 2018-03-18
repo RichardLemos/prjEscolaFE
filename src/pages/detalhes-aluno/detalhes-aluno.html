@@ -1,0 +1,27 @@
+<!--
+  Generated template for the DetalhesAlunoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhes do Aluno</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+    <ion-card *ngIf="aluno">
+        <ion-item>
+          <h1>{{aluno.nome}}</h1>
+        </ion-item>
+        <ion-card-content>
+          <p class="aluno-descricao">{{aluno.estadoCivil}}</p>
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>
