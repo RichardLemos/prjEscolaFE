@@ -1,3 +1,4 @@
+import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component } from '@angular/core';
 import {NavController, NavParams } from 'ionic-angular';
 
@@ -14,12 +15,22 @@ import {NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detalhes-aluno.html',
 })
 export class DetalhesAlunoPage {
+  aluno;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alunoProvider:AlunoProvider) {
+      let idAluno = this.navParams.get('idAluno')
+      this.alunoProvider.getAluno(idAluno).subscribe((aluno)=>{
+        this.aluno = aluno
+      })
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetalhesAlunoPage');
+
+
+
   }
 
 }

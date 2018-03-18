@@ -1,7 +1,7 @@
 import { Aluno } from './../../model/aluno';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, ViewController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 
 
@@ -21,8 +21,16 @@ export class AlunoModalPage {
 
   @ViewChild('nome') nome;
   @ViewChild('curso') curso;
+  @ViewChild('estadoCivil') estadoCivil;
   aluno:any = {};
   error: any;
+  estadosCivis = [
+
+    {id: 1, descricao: "CASADO"},
+    {id: 2, descricao: "SOLTEIRO"},
+    {id: 3, descricao: "DIVORCIADO"},
+
+    ]
   cursos = [
 
   {id: 1, nome: "Sistemas de informação"},
@@ -39,7 +47,8 @@ export class AlunoModalPage {
               public viewCtrl:ViewController,
               public toastCtrl:ToastController,
               public alunoProvider:AlunoProvider,
-              public alertCtrl:AlertController
+              public alertCtrl:AlertController,
+              public loadingCtrl:LoadingController
             ) {
       }
 
@@ -57,16 +66,33 @@ export class AlunoModalPage {
 
     alunoForm.curso = this.curso.value
     alunoForm.id = this.curso.value
+    alunoForm.estadoCivil = this.estadoCivil.value
 
     this.alunoProvider.save(alunoForm).subscribe(result => {
 
     }, error => this.error = error);
-    let toast = this.toastCtrl.create({
-      message: 'Aluno em destaque "' + alunoForm.nome + " Salvo" + '.',
-      duration: 2000
+
+
+    let loading = this.loadingCtrl.create({
+      content: 'Inserindo aluno...'
     });
-    toast.present();
+
+    loading.present();
+    setTimeout(() => {
+      loading.dismissAll();
       this.dismiss();
+      let toast = this.toastCtrl.create({
+        message: 'Aluno em destaque "' + alunoForm.nome + " Salvo" + '.',
+        position:'bottom',
+        duration: 2000
+      });
+      toast.present();
+
+    },3000);
+
+
+
+
   }
 
   ionViewDidLoad() {

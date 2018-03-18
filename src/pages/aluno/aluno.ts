@@ -1,3 +1,4 @@
+import { DetalhesAlunoPage } from './../detalhes-aluno/detalhes-aluno';
 import { AlunoModalPage } from './../aluno-modal/aluno-modal';
 import { AlunoProvider } from './../../providers/aluno/aluno';
 import { Component } from '@angular/core';
@@ -94,6 +95,10 @@ export class AlunoPage {
       toast.present();
     },3000)
 
+  }
+
+  openDetalhesAluno(idAluno){
+    this.navCtrl.push(DetalhesAlunoPage,{idAluno:idAluno})
   }
 
 

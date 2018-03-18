@@ -12,8 +12,8 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CursoProvider {
 
-  public API = 'http://localhost:8080/cursos';  //test
-  // public API = 'https://prj-aluno-destaque.herokuapp.com/cursos' //prod
+  // public API = 'http://localhost:8080/cursos';  //test
+  public API = 'https://prj-aluno-destaque.herokuapp.com/cursos' //prod
 
   constructor(public http: Http) {
 
