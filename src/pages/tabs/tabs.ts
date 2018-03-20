@@ -10,8 +10,8 @@ import { CursoPage } from '../curso/curso';
 })
 export class TabsPage {
 
-  tab1Root = CursoPage;
-  tab2Root = AlunoPage;
+  tab1Root = AlunoPage;
+  tab2Root = CursoPage;
 
   constructor() {
 

@@ -19,8 +19,7 @@ export class AlunoPage {
 
     alunos = []
     carregando = true;
-    erro = false
-
+    erro = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -33,22 +32,7 @@ export class AlunoPage {
 
   ionViewDidLoad() {
 
-    let loading = this.loadingCtrl.create({
-      content: 'Carregando os alunos em destaque...'
-    });
-    loading.present();
-    this.alunoProvider.getAlunos().subscribe(alunos => {
-      this.alunos = alunos;
-      this.carregando = false;
-      loading.dismiss();
-
-    if(alunos.length===0){
-      this.presentToast();
-    }
-
-    console.log(this.alunos);
-
-    })
+    this.getAlunos();
 
   }
   openModal(aluno) {
@@ -99,6 +83,33 @@ export class AlunoPage {
 
   openDetalhesAluno(idAluno){
     this.navCtrl.push(DetalhesAlunoPage,{idAluno:idAluno})
+  }
+
+  doRefresh(refresher) {
+    this.getAlunos();
+    refresher.complete();
+  }
+
+  getAlunos(){
+    let loading = this.loadingCtrl.create({
+      content: 'Carregando os alunos em destaque...'
+    });
+    loading.present();
+    this.alunoProvider.getAlunos().subscribe(alunos => {
+      this.alunos = alunos;
+      this.carregando = false;
+      loading.dismiss();
+
+    if(alunos.length===0){
+      this.presentToast();
+    }
+
+
+
+    })
+
+
+
   }
 
 

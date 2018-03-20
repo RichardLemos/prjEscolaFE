@@ -1,6 +1,6 @@
 import { DetalhesCursoPage } from './../detalhes-curso/detalhes-curso';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { CursoProvider } from '../../providers/curso/curso';
 
 /**
@@ -20,17 +20,23 @@ export class CursoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public cursoProvider:CursoProvider) {
+    public cursoProvider:CursoProvider,
+    public loadingCtrl:LoadingController) {
 
-      this.cursoProvider.getCursos().subscribe( cursos=>{
-        this.cursos = cursos
-        console.log(cursos);
-
-      })
     }
 
 
     ionViewDidLoad(){
+      let loading = this.loadingCtrl.create({
+        content: 'Carregando os Cursos...'
+      });
+      loading.present();
+      this.cursoProvider.getCursos().subscribe( cursos=>{
+        this.cursos = cursos;
+        console.log(cursos);
+        loading.dismiss();
+      })
+
     }
     openDetalhesCurso(idCurso){
       this.navCtrl.push(DetalhesCursoPage,{idCurso:idCurso})
