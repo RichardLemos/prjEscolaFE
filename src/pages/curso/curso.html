@@ -13,13 +13,16 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-   <ion-card (click)="openDetalhesCurso(curso.id)" *ngFor="let curso of cursos">
-     <ion-item text-center>
-       <ion-card-content>
-         <h2 style="font-weight:bold">{{curso.nome}}</h2>
-       </ion-card-content>
-     </ion-item>
-   </ion-card>
+  <ion-card (click)="openDetalhesCurso(curso.id)" *ngFor="let curso of cursos">
+    <ion-item text-center>
+      <ion-card-content>
+        <h2 style="font-weight:bold">{{curso.nome}}</h2>
+      </ion-card-content>
+    </ion-item>
+  </ion-card>
 
 </ion-content>

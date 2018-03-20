@@ -20,28 +20,40 @@ export class CursoPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public cursoProvider:CursoProvider,
-    public loadingCtrl:LoadingController) {
-
-    }
-
-
-    ionViewDidLoad(){
-      let loading = this.loadingCtrl.create({
-        content: 'Carregando os Cursos...'
-      });
-      loading.present();
-      this.cursoProvider.getCursos().subscribe( cursos=>{
-        this.cursos = cursos;
-        console.log(cursos);
-        loading.dismiss();
-      })
-
-    }
-    openDetalhesCurso(idCurso){
-      this.navCtrl.push(DetalhesCursoPage,{idCurso:idCurso})
-    }
+    public cursoProvider: CursoProvider,
+    public loadingCtrl: LoadingController) {
 
   }
+
+
+  ionViewDidLoad() {
+    this.getCursos();
+  }
+  openDetalhesCurso(idCurso) {
+    this.navCtrl.push(DetalhesCursoPage, { idCurso: idCurso })
+  }
+
+  getCursos() {
+    let loading = this.loadingCtrl.create({
+      content: 'Carregando os Cursos...'
+    });
+    loading.present();
+    this.cursoProvider.getCursos().subscribe(cursos => {
+      this.cursos = cursos;
+      console.log(cursos);
+      loading.dismiss();
+    })
+
+  }
+
+  doRefresh(refresher) {
+    this.getCursos();
+    refresher.complete();
+
+  }
+
+}
+
+
 
 
