@@ -5,41 +5,44 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-    <ion-navbar>
-      <ion-title>Top CR do Período</ion-title>
-      <ion-buttons end>
-        <button ion-button icon-only (click)="openModal()" color="primary">
-          <ion-icon name="add-circle"></ion-icon>
-          <ion-icon name="people"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>Top CR do Período</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()" color="primary">
+        <ion-icon name="add-circle"></ion-icon>
+        <ion-icon name="people"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding>
 
-    <ion-content  padding>
-        <ion-refresher (ionRefresh)="doRefresh($event)">
-            <ion-refresher-content></ion-refresher-content>
-          </ion-refresher>
+  <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list *ngFor="let aluno of alunos">
+      <ion-item-sliding >
 
-        <ion-card  *ngFor="let aluno of alunos">
-<ion-row>
-          <ion-col  >
-  <ion-item no-lines   *ngIf="!erro"  text-center>
+        <ion-item no-lines (click)="openDetalhesAluno(aluno.id)" *ngIf="!erro" text-center>
+            <ion-avatar >
+                <img *ngIf="aluno.curso.id===1" class="img-curso" src="./assets/imgs/curso-sistemas.png">
+                <img *ngIf="aluno.curso.id===2" class="img-curso" src="./assets/imgs/curso-medicina.png">
+                <img *ngIf="aluno.curso.id===3" class="img-curso" src="./assets/imgs/curso-nutricao.jpg">
+                <img *ngIf="aluno.curso.id===4" class="img-curso" src="./assets/imgs/curso-engenharia.png">
+              </ion-avatar>
+              <h2 class="aluno-title">{{aluno.curso.nome}} - {{aluno.cr}}</h2>
+          <h2 class="aluno-title">{{aluno.nome}}</h2>
 
-    <h2 class="aluno-title">{{aluno.nome}}</h2>
-    <p class="aluno-date">{{aluno.cr}}</p>
-    <img *ngIf="aluno.curso.id===1" class="img-curso"  src="./assets/imgs/curso-sistemas.jpg">
-    <img *ngIf="aluno.curso.id===2" class="img-curso"  src="./assets/imgs/curso-medicina.jpg">
-    <img *ngIf="aluno.curso.id===3" class="img-curso"  src="./assets/imgs/curso-nutricao.jpg">
-    <img *ngIf="aluno.curso.id===4" class="img-curso"  src="./assets/imgs/curso-engenharia.jpg">
-    <button class="btn-apagar" ion-button round color="default"(click)="openDetalhesAluno(aluno.id)">Detalhes</button>
-    <button class="btn-apagar" ion-button round color="danger" (click)="apagarAluno(aluno.id)">Apagar</button>
-  </ion-item>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="apagarAluno(aluno.id)">
+            <ion-icon name="trash"></ion-icon> Deletar
+          </button>
+        </ion-item-options>
 
-</ion-col>
-</ion-row>
-  </ion-card>
+      </ion-item-sliding>
+    </ion-list>
 
-</ion-content>
+  </ion-content>

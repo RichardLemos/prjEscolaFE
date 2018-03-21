@@ -24,10 +24,12 @@ export class DetalhesAlunoPage {
       let idAluno = this.navParams.get('idAluno')
       this.alunoProvider.getAluno(idAluno).subscribe((aluno)=>{
         this.aluno = aluno
+
       })
   }
 
   ionViewDidLoad() {
+
 
 
 

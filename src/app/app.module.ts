@@ -18,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlunoProvider } from '../providers/aluno/aluno';
 import { CursoProvider } from '../providers/curso/curso';
 import { CursoPage } from '../pages/curso/curso';
+import { ContactPage } from '../pages/contact/contact';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { CursoPage } from '../pages/curso/curso';
     DetalhesCursoPage,
     DetalhesAlunoPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ContactPage
+
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { CursoPage } from '../pages/curso/curso';
     DetalhesCursoPage,
     DetalhesAlunoPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    ContactPage
   ],
   providers: [
     StatusBar,
