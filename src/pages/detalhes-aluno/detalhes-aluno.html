@@ -12,27 +12,19 @@
 
 </ion-header>
 
-
 <ion-content padding>
-
-
   <ion-list  *ngIf="aluno">
     <ion-item text-center>
-      <ion-avatar>
-          <img *ngIf="aluno.estadoCivil==='CASADO'" class="img-curso" src="./assets/imgs/casado.png">
-          <img *ngIf="aluno.estadoCivil==='SOLTEIRO'" class="img-curso" src="./assets/imgs/solteiro.jpg">
-          <img *ngIf="aluno.estadoCivil==='DIVORCIADO'" class="img-curso" src="./assets/imgs/divorciado.png">
 
-        </ion-avatar>
         <h1>{{aluno.nome}}</h1>
       <h1>{{aluno.cr}}</h1>
       <h1>{{aluno.matricula}}</h1>
 
       <ion-avatar>
-          <img *ngIf="aluno.curso.id===1" class="img-curso" src="./assets/imgs/curso-sistemas.png">
-          <img *ngIf="aluno.curso.id===2" class="img-curso" src="./assets/imgs/curso-medicina.png">
-          <img *ngIf="aluno.curso.id===3" class="img-curso" src="./assets/imgs/curso-nutricao.jpg">
-          <img *ngIf="aluno.curso.id===4" class="img-curso" src="./assets/imgs/curso-engenharia.png">
+          <img *ngIf="aluno.curso.id===1" class="img-curso" src="./assets/imgs/Sistemas_De_Informacao.jpg">
+          <img *ngIf="aluno.curso.id===2" class="img-curso" src="./assets/imgs/analise.jpg">
+          <img *ngIf="aluno.curso.id===3" class="img-curso" src="./assets/imgs/design.jpg">
+          <img *ngIf="aluno.curso.id===4" class="img-curso" src="./assets/imgs/redes.jpg">
         </ion-avatar>
 
 

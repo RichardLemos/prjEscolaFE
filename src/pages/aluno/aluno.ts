@@ -44,7 +44,7 @@ export class AlunoPage {
 
   apagarAluno(aluno){
     let confirm = this.alertCtrl.create({
-      title: 'Tem certeza que você quer apagar o aluno ?',
+      title: 'Tem certeza que você deseja apagar o aluno?',
       buttons: [
         {
           text: 'Sim',
@@ -92,7 +92,7 @@ export class AlunoPage {
 
   getAlunos(){
     let loading = this.loadingCtrl.create({
-      content: 'Carregando os alunos em destaque...'
+      content: 'Carregando lista de alunos...'
     });
     loading.present();
     this.alunoProvider.getAlunos().subscribe(alunos => {

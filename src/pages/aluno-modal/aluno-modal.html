@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
       <ion-title>
-        {{aluno ? 'Detalhes de aluno' : 'Adicionar aluno em destaque'}}
+        {{aluno ? 'Cadastrar Aluno' : 'Adicionar aluno em destaque'}}
       </ion-title>
       <ion-buttons start>
         <button ion-button (click)="dismiss()">
@@ -27,16 +27,6 @@
                            required [(ngModel)]="aluno.matricula" #matricula></ion-input>
               </ion-item>
 
-              <ion-item>
-                  <ion-input placeholder="CR" name="cr" type="number"
-                         min="10" max="1"    required [(ngModel)]="aluno.cr" #matricula></ion-input>
-                </ion-item>
-
-                <ion-item>
-                  <ion-select  name="curso" required #estadoCivil class="select-curso" placeholder="Estado Civil" multiple="false">
-                      <ion-option [value]="estadoCivil.descricao"  *ngFor="let estadoCivil of estadosCivis" >{{estadoCivil.descricao}}</ion-option>
-                    </ion-select>
-                    </ion-item>
                 <ion-item>
                   <ion-select  name="curso" required #curso class="select-curso" placeholder="Curso" multiple="false">
                       <ion-option [value]="curso.id"  *ngFor="let curso of cursos" >{{curso.nome}}</ion-option>

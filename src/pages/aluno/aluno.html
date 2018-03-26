@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Top CR do Período</ion-title>
+    <ion-title>Alunos</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="openModal()" color="primary">
         <ion-icon name="add-circle"></ion-icon>
@@ -27,10 +27,10 @@
 
         <ion-item no-lines (click)="openDetalhesAluno(aluno.id)" *ngIf="!erro" text-center>
             <ion-avatar >
-                <img *ngIf="aluno.curso.id===1" class="img-curso" src="./assets/imgs/curso-sistemas.png">
-                <img *ngIf="aluno.curso.id===2" class="img-curso" src="./assets/imgs/curso-medicina.png">
-                <img *ngIf="aluno.curso.id===3" class="img-curso" src="./assets/imgs/curso-nutricao.jpg">
-                <img *ngIf="aluno.curso.id===4" class="img-curso" src="./assets/imgs/curso-engenharia.png">
+                <img *ngIf="aluno.curso.id===1" class="img-curso" src="./assets/imgs/Sistemas_De_Informacao.jpg">
+                <img *ngIf="aluno.curso.id===2" class="img-curso" src="./assets/imgs/analise.jpg">
+                <img *ngIf="aluno.curso.id===3" class="img-curso" src="./assets/imgs/design.jpg">
+                <img *ngIf="aluno.curso.id===4" class="img-curso" src="./assets/imgs/redes.jpg">
               </ion-avatar>
               <h2 class="aluno-title">{{aluno.curso.nome}} - {{aluno.cr}}</h2>
           <h2 class="aluno-title">{{aluno.nome}}</h2>

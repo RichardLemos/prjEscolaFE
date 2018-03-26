@@ -21,22 +21,15 @@ export class AlunoModalPage {
 
   @ViewChild('nome') nome;
   @ViewChild('curso') curso;
-  @ViewChild('estadoCivil') estadoCivil;
   aluno:any = {};
   error: any;
-  estadosCivis = [
-
-    {id: 1, descricao: "CASADO"},
-    {id: 2, descricao: "SOLTEIRO"},
-    {id: 3, descricao: "DIVORCIADO"},
-
-    ]
+   
   cursos = [
 
   {id: 1, nome: "Sistemas de informação"},
-  {id: 2, nome: "Medicina"},
-  {id: 3, nome: "Nutrição"},
-  {id: 4, nome: "Engenharia Civil"}
+  {id: 2, nome: "Análise e Desenvolvimento de Sistemas"},
+  {id: 3, nome: "Design Gráfico"},
+  {id: 4, nome: "Redes de Computadores"}
 
   ]
 
@@ -66,7 +59,6 @@ export class AlunoModalPage {
 
     alunoForm.curso = this.curso.value
     alunoForm.id = this.curso.value
-    alunoForm.estadoCivil = this.estadoCivil.value
 
     this.alunoProvider.save(alunoForm).subscribe(result => {
 

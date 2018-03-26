@@ -1,5 +1,4 @@
 import { DetalhesAlunoPage } from './../pages/detalhes-aluno/detalhes-aluno';
-import { DetalhesCursoPage } from './../pages/detalhes-curso/detalhes-curso';
 import { AlunoModalPage } from './../pages/aluno-modal/aluno-modal';
 import { HttpModule } from '@angular/http';
 
@@ -16,17 +15,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AlunoProvider } from '../providers/aluno/aluno';
-import { CursoProvider } from '../providers/curso/curso';
-import { CursoPage } from '../pages/curso/curso';
 import { ContactPage } from '../pages/contact/contact';
+import { CursoProvider } from '../providers/curso/curso';
 
 @NgModule({
   declarations: [
     AlunoPage,
     AlunoModalPage,
     MyApp,
-    CursoPage,
-    DetalhesCursoPage,
     DetalhesAlunoPage,
     HomePage,
     TabsPage,
@@ -40,11 +36,9 @@ import { ContactPage } from '../pages/contact/contact';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    CursoPage,
     AlunoPage,
     AlunoModalPage,
     MyApp,
-    DetalhesCursoPage,
     DetalhesAlunoPage,
     HomePage,
     TabsPage,
