@@ -15,7 +15,7 @@ export class AlunoProvider {
   existeAluno:boolean = false;
 
   // public API = 'http://localhost:8080/alunos';  //test
-  public API = 'http://localhost:8080/alunos' //prod
+  public API = 'https://app-prjescolabackend.herokuapp.com/alunos' //prod
 
 
   constructor(public http: Http) {

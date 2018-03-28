@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class CursoProvider {
 
   // public API = 'http://localhost:8080/cursos';  //test
-  public API = 'http://localhost:8080/alunos' //prod
+  public API = 'https://app-prjescolabackend.herokuapp.com/alunos' //prod
 
   constructor(public http: Http) {
 
